@@ -29,6 +29,6 @@ class UserEntity(
     override fun hashCode(): Int = kotlinHashCode(properties)
 
     override fun toString(): String {
-        return "CurdEntity(id=$id, name=$name, age=$age, team=$teamEntity, creageId=$createId, createDt=$createDt)"
+        return "CurdEntity(id=$id, name=$name, age=$age, creageId=$createId, createDt=$createDt)"
     }
 }

@@ -13,6 +13,9 @@ class TeamEntity(
     var id: Long = 0L,
     var name: String? = null,
 
+    @OneToMany(mappedBy = "teamEntity", fetch = FetchType.LAZY)
+    var userEntityList: MutableList<UserEntity> = mutableListOf()
+
 ) : BaseEntity() {
 
     companion object {
@@ -21,6 +24,6 @@ class TeamEntity(
     override fun equals(other: Any?): Boolean = kotlinEquals(other, properties)
     override fun hashCode(): Int = kotlinHashCode(properties)
     override fun toString(): String {
-        return "TeamEntity(id=$id, name=$name, creageId=$createId, createDt=$createDt)"
+        return "TeamEntity(id=$id, name=$name, userEntityList=$userEntityList, creageId=$createId, createDt=$createDt)"
     }
 }

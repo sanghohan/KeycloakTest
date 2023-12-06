@@ -47,6 +47,23 @@ class TestCrudController(
         return crudTestService.insertTeamTest(number)
     }
 
+    @RequestMapping(value = ["/crud/team/get/{number}"], method = [RequestMethod.GET])
+    @ResponseBody
+    fun getTeamTest(@PathVariable number: Int): String {
+        return crudTestService.selectTeamTest(number)
+    }
+
+    @RequestMapping(value = ["/crud/team/getAll"], method = [RequestMethod.GET])
+    @ResponseBody
+    fun getAllTeamTest(): String {
+        return crudTestService.selectTeamAllTest()
+    }
+
+    @RequestMapping(value = ["/crud/team/getAllFetchJoin"], method = [RequestMethod.GET])
+    @ResponseBody
+    fun getAllFetchJoinTeamTest(): String {
+        return crudTestService.selectTeamAllFetchJoinTest()
+    }
 
 }
 

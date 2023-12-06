@@ -73,4 +73,24 @@ class CrudTestService(
 
         return team.toString()
     }
+
+    fun selectTeamTest(number: Int): String {
+        val team =  teamTestRepository.findById(number.toLong()).orElseThrow()
+        return team.toString()
+    }
+
+
+    fun selectTeamAllTest(): String {
+        //n+1 문제 발생
+        val team =  teamTestRepository.findAll()
+
+        return team.toString()
+    }
+
+    fun selectTeamAllFetchJoinTest(): String {
+        //n+1 문제 해결
+        val team =  teamTestRepository.findAllFetchJoin()
+
+        return team.toString()
+    }
 }
