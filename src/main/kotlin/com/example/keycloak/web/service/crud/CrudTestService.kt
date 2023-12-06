@@ -2,6 +2,7 @@ package com.example.keycloak.web.service.crud
 
 import com.example.keycloak.entity.TeamEntity
 import com.example.keycloak.entity.UserEntity
+import com.example.keycloak.repository.QueryDslUserRepository
 import com.example.keycloak.repository.TeamTestRepository
 import com.example.keycloak.repository.UserTestRepository
 import mu.KotlinLogging
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service
 class CrudTestService(
     private val userTestRepository: UserTestRepository,
     private val teamTestRepository: TeamTestRepository,
+    private val queryDslUserRepository: QueryDslUserRepository
 ) {
 
     private val logger = KotlinLogging.logger {}
@@ -90,6 +92,13 @@ class CrudTestService(
     fun selectTeamAllFetchJoinTest(): String {
         //n+1 문제 해결
         val team =  teamTestRepository.findAllFetchJoin()
+
+        return team.toString()
+    }
+
+    fun selectTeamUseQueryDsl(): String {
+        //n+1 문제 해결
+        val team =  queryDslUserRepository.findAllByOrderByIdDesc()
 
         return team.toString()
     }

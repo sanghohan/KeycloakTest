@@ -2,6 +2,7 @@ package com.example.keycloak.entity
 
 import com.example.keycloak.support.kotlinEquals
 import com.example.keycloak.support.kotlinHashCode
+import com.example.keycloak.web.dto.TeamDto
 import javax.persistence.*
 
 @Entity
@@ -25,5 +26,12 @@ class TeamEntity(
     override fun hashCode(): Int = kotlinHashCode(properties)
     override fun toString(): String {
         return "TeamEntity(id=$id, name=$name, userEntityList=$userEntityList, creageId=$createId, createDt=$createDt)"
+    }
+
+    fun toDto() : TeamDto {
+        return TeamDto(
+            id = this.id,
+            name = this.name
+        )
     }
 }

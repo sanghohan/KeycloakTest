@@ -2,6 +2,7 @@ package com.example.keycloak.entity
 
 import com.example.keycloak.support.kotlinEquals
 import com.example.keycloak.support.kotlinHashCode
+import com.example.keycloak.web.dto.UserDto
 import javax.persistence.*
 
 @Entity
@@ -30,5 +31,14 @@ class UserEntity(
 
     override fun toString(): String {
         return "CurdEntity(id=$id, name=$name, age=$age, creageId=$createId, createDt=$createDt)"
+    }
+
+    fun toDto() : UserDto {
+        return UserDto(
+            id = this.id,
+            name = this.name,
+            age = this.age,
+            team = this.teamEntity.toDto()
+        )
     }
 }

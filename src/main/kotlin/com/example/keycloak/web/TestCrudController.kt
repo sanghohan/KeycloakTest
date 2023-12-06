@@ -65,5 +65,11 @@ class TestCrudController(
         return crudTestService.selectTeamAllFetchJoinTest()
     }
 
+    @RequestMapping(value = ["/crud/team/getAllQueryDsl"], method = [RequestMethod.GET])
+    @ResponseBody
+    fun selectTeamUseQueryDsl(): String {
+        return crudTestService.selectTeamUseQueryDsl()
+    }
+
 }
 

@@ -19,3 +19,15 @@ data class UserTestDto(
     }
 
 }
+
+data class UserDto(
+    var id: Long? = null,
+    val name: String?,
+    val age: Int?,
+    val team: TeamDto?
+)
+
+data class TeamDto(
+    var id: Long? = null,
+    val name: String?
+)
