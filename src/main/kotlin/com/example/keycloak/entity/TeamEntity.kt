@@ -4,24 +4,23 @@ import com.example.keycloak.support.kotlinEquals
 import com.example.keycloak.support.kotlinHashCode
 import javax.persistence.*
 
-
 @Entity
-@Table(name = "audit_log")
-class AuditLogEntity(
-
+@Table(name = "team")
+class TeamEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Long = 0L,
-    val ip: String?,
-    val uri: String?
+    var id: Long = 0L,
+    var name: String? = null,
 
 ) : BaseEntity() {
 
     companion object {
-        private val properties = arrayOf(AuditLogEntity::id, AuditLogEntity::ip, AuditLogEntity::uri)
+        private val properties = arrayOf(TeamEntity::id, TeamEntity::name)
     }
-
     override fun equals(other: Any?): Boolean = kotlinEquals(other, properties)
     override fun hashCode(): Int = kotlinHashCode(properties)
+    override fun toString(): String {
+        return "TeamEntity(id=$id, name=$name, creageId=$createId, createDt=$createDt)"
+    }
 }
